@@ -16,11 +16,11 @@ def min_conflicts(csp, assignment={}, max_steps=1000):
     for i in range(max_steps):
         conflicted = csp.conflicted_vars(assignment)
         if not conflicted:
+            stdout.write("\r")
             return assignment
         X = random.choice(conflicted)
         val = min_conflicts_value(csp, X, assignment)
         assignment[X] = val
         stdout.write( "\rProgress: " + "%d/%d" % (i + 1, max_steps) )
         stdout.flush()
-    stdout.write("\r")
     return None
