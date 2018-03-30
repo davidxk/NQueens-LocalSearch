@@ -1,5 +1,5 @@
 import random
-from SearchProblem import NQueensSearch
+from NQueens import NQueensSearch
 
 # This is a fast implementation of N Queens problem with Simulated Annealing
 #   where we calculate the value difference between a state and its neighbour
@@ -24,12 +24,11 @@ class FastNQueens(NQueensSearch):
 
 import sys
 import math
-def exp_schedule(k=4, lam=0.001, limit=20000):
-    return lambda t: (k * math.exp(-lam * t) if t < limit else 0)
 
-def fast_simulated_annealing(problem, schedule=exp_schedule()):
+def fast_simulated_annealing(problem):
     current = problem.initial()
     value = problem.value(current)
+    schedule = lambda t: max(120 * 0.95 ** t, 0.01)
     for t in xrange(sys.maxsize):
         T = schedule(t)
         if T == 0 or value == 0:

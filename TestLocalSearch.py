@@ -29,7 +29,7 @@ from hill_climbing import random_restart
 from simulated_annealing import simulated_annealing
 from local_beam_search import local_beam_search
 from local_beam_search import stochastic_beam_search
-from FastNQueen import fast_simulated_annealing
+from FastNQueens import fast_simulated_annealing
 from NQueens import NQueensSearch
 from FastNQueens import FastNQueens
 

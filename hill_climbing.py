@@ -1,4 +1,4 @@
-from random import shuffle
+import random
 
 def hill_climbing(problem):
     # Keep choosing the neighbour with highest value until no neighbor is better
@@ -7,8 +7,8 @@ def hill_climbing(problem):
         neighbours = problem.children(current)
         if not neighbours:
             break
-        shuffle(neighbours)
-        neighbour = max(neighbours, key=lambda state: problem.value(state))
+        neighbour = max(neighbours,
+                key=lambda state: (problem.value(state), random.random()))
         if problem.value(neighbour) <= problem.value(current):
             break
         current = neighbour
