@@ -1,5 +1,6 @@
 import random
 
+# Hill Climbing in continuous space is Gradient Descent
 def hill_climbing(problem):
     # Keep choosing the neighbour with highest value until no neighbor is better
     current = problem.initial()

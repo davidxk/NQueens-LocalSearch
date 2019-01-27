@@ -1,6 +1,7 @@
 import random
 from sys import stdout
 
+# Min Conflicts in continuous space is Coordinate Descent
 def min_conflicts_value(csp, X, assignment):
     # Return the value that will give var the least number of conflicts.
     random.shuffle(csp.domains[X])
