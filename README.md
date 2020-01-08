@@ -11,13 +11,13 @@ This repository implements the following local search methods.
 For demonstration, these algorithms are tested on the classic N Queens problem. To run these algorithms for N Queens, use command
 
 ```shell
-$ python TestLocalSearch.py
+$ python3 TestLocalSearch.py
 ```
 
 Unlike other local search algorithms, Min-conflicts Algorithm is defined in the Constraint Satisfaction Problem(CSP) context so it is implemented separately from others. It runs extremely fast for N Queens problem even for large boards. To run this algorithm, use command
 
 ```shell
-$ python TestMinConflicts.py
+$ python3 TestMinConflicts.py
 ```
 
 Most of these local search algorithms have parameters that can be tuned to work with a specific problem, shown in the following table: 

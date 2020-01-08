@@ -15,7 +15,7 @@ def local_beam_search(problem, k=5, limit=1000):
                     seen.add(neighbour)
                     value = problem.value(neighbour)
                     if value is 0:
-                        print "local beam: %d" % cnt # Print number of iter
+                        print("local beam: %d" % cnt) # Print number of iter
                         return neighbour
                     if len(nextfront) < k:
                         heappush(nextfront, (value, neighbour))
@@ -43,7 +43,7 @@ class BiasedLotteryPool:
     def floor(self, array, target):
         left, right = 0, len(array) - 1
         while left <= right:
-            center = (left + right) / 2
+            center = (left + right) // 2
             if array[center] < target:
                 left = center + 1
             else:
@@ -65,7 +65,7 @@ class BiasedLotteryPool:
 def stochastic_beam_search(problem, k=15, limit=1000):
     front = [problem.initial() for i in range(k)]
     cnt = 0
-    total = problem.N * (problem.N - 1) / 2 + 1
+    total = problem.N * (problem.N - 1) // 2 + 1
     while front and cnt < limit:
         pool = BiasedLotteryPool()
         for node in front:
@@ -73,9 +73,9 @@ def stochastic_beam_search(problem, k=15, limit=1000):
             for neighbour in neighbours:
                 value = problem.value(neighbour)
                 if value is 0:
-                    print "stoch # of iter: %d" % cnt # Print num of iter
+                    print("stoch # of iter: %d" % cnt) # Print num of iter
                     return neighbour
-                pool.add(neighbour, 1000000000 / (value - 1) ** 2)
+                pool.add(neighbour, 1000000000 // (value - 1) ** 2)
         front = pool.pick(k)
         cnt += 1
     return current

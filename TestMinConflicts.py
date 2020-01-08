@@ -16,8 +16,8 @@ class MinConflictNQueensSolver:
             adjList[i] = set([ j for j in range(n) if j != i ])
         domains = {}
         for i in range(n):
-            domains[i] = range(n)
-        return NQueensCSP(range(n), adjList, domains)
+            domains[i] = list(range(n))
+        return NQueensCSP(list(range(n)), adjList, domains)
 
     def solveNQueens(self, n):
         """
@@ -30,8 +30,8 @@ class MinConflictNQueensSolver:
 
 if __name__ == "__main__":
     sol = MinConflictNQueensSolver()
-    size = input("Please input the size of the board(4~300): ")
+    size = eval(input("Please input the size of the board(4~300): "))
     board = sol.solveNQueens(size)
     charlist = map(list, board)
     for line in charlist:
-        print " ".join(line)
+        print(" ".join(line))

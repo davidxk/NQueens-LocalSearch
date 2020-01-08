@@ -10,9 +10,9 @@ class TestLocalSearch(object):
         return board
 
     def printBoard(self, board):
-        charlist = map(list, board)
+        charlist = list(map(list, board))
         for line in charlist:
-            print " ".join(line)
+            print(" ".join(line))
 
     def testLocalSearch(self, problem, local_search):
         times = 10
@@ -22,7 +22,7 @@ class TestLocalSearch(object):
             result = local_search(problem)
             if problem.value(result) is 0:
                 cnt += 1
-        print " - Accuracy: %2d/%d\tRunning time: %f"%(cnt, times, time()-start)
+        print(" - Accuracy: %2d/%d\tRunning time: %f"%(cnt, times, time()-start))
 
 from hill_climbing import hill_climbing
 from hill_climbing import random_restart
@@ -35,9 +35,9 @@ from FastNQueens import FastNQueens
 
 if __name__ == "__main__":
     test = TestLocalSearch()
-    print "Running local search for N Queens Problem"
-    size = input(" - Please input the size of the board (4~15): ")
-    print
+    print("Running local search for N Queens Problem")
+    size = eval(input(" - Please input the size of the board (4~15): "))
+    print()
     problem = NQueensSearch(size)
     algorithms = [fast_simulated_annealing, hill_climbing, random_restart,
             simulated_annealing, local_beam_search]
@@ -45,8 +45,8 @@ if __name__ == "__main__":
             "simulated_annealing", "local_beam_search"]
     problems = [FastNQueens(size), problem, problem, problem, problem]
     for i in range(len(algorithms)):
-        print names[i]
+        print(names[i])
         board = test.testLocalSearch(problems[i], algorithms[i])
     # stochastic_beam_search runs rather slowly on large boards
-    print "stochastic_beam_search"
+    print("stochastic_beam_search")
     board = test.testLocalSearch(problem, stochastic_beam_search)

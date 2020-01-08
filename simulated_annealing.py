@@ -19,7 +19,7 @@ def exp_schedule(k=4, lam=0.001, limit=20000):
 def simulated_annealing(problem, schedule=exp_schedule()):
     current = problem.initial()
     currVal = problem.value(current)
-    for t in xrange(sys.maxsize):
+    for t in range(sys.maxsize):
         T = schedule(t)
         if T == 0 or problem.goal_test(current):
             return current
@@ -28,6 +28,6 @@ def simulated_annealing(problem, schedule=exp_schedule()):
             return current
         nextVal = problem.value(neighbour) 
         delta_e = nextVal - currVal
-        if delta_e > 0 or random.uniform(0.0, 1.0) < math.exp(delta_e / T):
+        if delta_e > 0 or random.uniform(0.0, 1.0) < math.exp(delta_e // T):
             current = neighbour
             currVal = nextVal

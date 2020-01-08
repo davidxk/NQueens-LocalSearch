@@ -29,13 +29,13 @@ def fast_simulated_annealing(problem):
     current = problem.initial()
     value = problem.value(current)
     schedule = lambda t: max(120 * 0.95 ** t, 0.01)
-    for t in xrange(sys.maxsize):
+    for t in range(sys.maxsize):
         T = schedule(t)
         if T == 0 or value == 0:
             return current
         neighbour, delta_e = problem.random_child(current)
         if not neighbour:
             return current
-        if delta_e > 0 or random.uniform(0.0, 1.0) < math.exp(delta_e / T):
+        if delta_e > 0 or random.uniform(0.0, 1.0) < math.exp(delta_e // T):
             current = neighbour
             value += delta_e

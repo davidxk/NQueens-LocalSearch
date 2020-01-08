@@ -57,7 +57,7 @@ class NQueensSearch(SearchProblem):
         clashes = 0
         for cnt in [shu, pie, na]:
             for key in cnt:
-                clashes += cnt[key] * (cnt[key] - 1) / 2
+                clashes += cnt[key] * (cnt[key] - 1) // 2
         return -clashes
 
     def children(self, state):
